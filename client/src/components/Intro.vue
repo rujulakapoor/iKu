@@ -1,14 +1,16 @@
 <template>
   <div class="hello">
 
-    <h3>Take a break from life</h3>
-    <h3>Sit down and share wisdom of</h3>
-    <h3>Haiku with iKu</h3>
+    <div style="margin: 50px 0 50px 0">
+      <h3>Take a break from life</h3>
+      <h3>Sit down and share wisdom of</h3>
+      <h3>Haiku with iKu</h3>
+    </div>
 
     <p>Haiku is a traditional form of Japanese poetry with 3 lines.</p> 
     <p>Each line has 5, 7, and 5 syllables respectively. </p>
     <p>Compose, share, and learn about Haiku with iKu.</p>
-    
+
   </div>
 </template>
 

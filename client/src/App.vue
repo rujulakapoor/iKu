@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="./assets/iKu_cropped.png">
     <Intro/>
     <Auth/>
+    <p>List of posts would go here</p>
   </div>
 </template>
 
@@ -15,6 +16,24 @@ export default {
   components: {
     Intro,
     Auth
+  },
+  data() {
+    return {
+      authenticated: false,
+    }
+  },
+  mounted() {
+    if(!this.authenticated) {
+      //this.$router.replace({ name: "home" });
+    }
+  },
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+    }
   }
 }
 </script>
