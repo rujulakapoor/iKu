@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/iKu_cropped.png">
-    <HelloWorld msg="Share your Haiku"/>
-    
+    <Intro/>
+    <Auth/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Intro from './components/Intro.vue'
+import Auth from './components/Auth.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Intro,
+    Auth
   }
 }
 </script>
