@@ -29,7 +29,7 @@ export default {
   }),
   methods: {
    onSuccess(googleUser) {
-        this.console.log(googleUser);
+        //this.console.log(googleUser);
  
         // This only gets the user information: id, name, imageUrl and email
         this.username = googleUser.getBasicProfile().getName();
