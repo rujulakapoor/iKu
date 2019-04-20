@@ -1,21 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainComponent from './App.vue'
-import SecureComponent from "./components/secure.vue"
+//import Secure from "./Secure.vue"
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
-    routes: [
-        {
-            path: "/secure",
-            name: "secure",
-            component: SecureComponent
-        },
+let router = new Router({
+    base: process.env.BASE_URL,
+    routes: [ 
         {
             path: "/",
             name: "home",
             component: MainComponent
+        },
+        {
+            path: "/Secure",
+            name: "Secure",
+            component: () => import("./views/Secure.vue")
+            //component: SecureComponent
         }
     ]
-})
+});
+
+export default router;

@@ -10,7 +10,7 @@
     export default {
         name: 'Secure',
         data() {
-            return {};
+  
         }
     }
 </script>
