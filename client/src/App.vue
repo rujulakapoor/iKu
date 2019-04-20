@@ -20,6 +20,9 @@ export default {
     Auth,
     SyllableCount,
   },
+  props: {
+    msg:String
+  },
   data() {
     return {
       authenticated: false,
