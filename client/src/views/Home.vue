@@ -1,18 +1,25 @@
 <template>
-  <div id="app">
-    <Navigation />
-    <router-view></router-view>
-    
+  <div id="home">
+    <v-container grid-list-xl></v-container>
+    <img alt="Vue logo" src="@/assets/iKu_cropped.png">
+    <Intro style="backgroundColor:#DDDDDD"/>
+    <Auth/>
+    <SyllableCount style="backgroundColor:#DDDDDD"/>
+    <p>List of posts would go here</p>
   </div>
 </template>
 
 <script>
-import Navigation from '@/components/Navigation.vue'
+import Intro from '@/components/Intro.vue'
+import Auth from '@/components/Auth.vue'
+import SyllableCount from '@/components/SyllableCount.vue'
 
 export default {
-  name: 'app',
+  name: 'home',
   components: {
-    Navigation
+    Intro,
+    Auth,
+    SyllableCount,
   },
   data() {
     return {
