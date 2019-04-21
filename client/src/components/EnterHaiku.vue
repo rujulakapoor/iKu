@@ -18,7 +18,7 @@
     <b-button v-on:click="click()">Check</b-button>
     <br/>
     <br/>
-    <b-button v-on:click="createPost()">Post</b-button>
+    <b-button v-on:click="createPost()" style="background-color:#8d72a8">Post</b-button>
   </div>
 </template>
 
@@ -66,7 +66,7 @@ export default {
         );
       }
       
-      //location.reload();
+      location.reload();
       },
       onSuccess(googleUser) {
         //this.console.log(googleUser);
@@ -176,6 +176,13 @@ border-color: #4285f4;
 </style>
 
 <style scoped>
+.login {
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
+  margin: 30px;
+  padding: 10px;
+}
+
 h3 {
   margin: 20px 0 0;
   color: #8d72a8;
