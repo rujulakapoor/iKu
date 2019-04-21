@@ -1,14 +1,12 @@
 <template>
   <div class="count">
-    <div class="login">
-      <h3>Log in</h3>
-      <p>Username:</p>
-      <p>{{this.username}}</p>
-      <div  style="align-items:center">
-          <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
-          <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
-          <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
-      </div>
+    <h3>Log in</h3>
+    <p v-if="LogInVisibility">Please Log in to write a haiku</p>
+    <p v-else>Hello, {{this.username}}</p>
+    <div style="align-items:center">
+        <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
+        <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+        <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
     </div>
 
     <div style="margin: 50px 0 0 0">
@@ -20,7 +18,7 @@
     <b-button v-on:click="click()">Check</b-button>
     <br/>
     <br/>
-    <b-button v-on:click="createPost()">Post</b-button>
+    <b-button v-on:click="createPost()" style="background-color:#8d72a8">Post</b-button>
   </div>
 </template>
 
@@ -77,7 +75,7 @@ export default {
         );
       }
       
-      //location.reload();
+      location.reload();
       },
       onSuccess(googleUser) {
         //this.console.log(googleUser);

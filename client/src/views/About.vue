@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <v-container grid-list-xl></v-container>
     <img alt="Coursemeleon logo" src="@/assets/iKu_cropped.png" />
     <h1>About iKu</h1>
     <p>
