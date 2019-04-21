@@ -15,7 +15,6 @@
     
     <Intro style="backgroundColor:#DDDDDD"/>
     <Auth/>
-    <SyllableCount style="backgroundColor:#DDDDDD"/>
     <p>List of posts would go here</p>
   </div>
 </template>
@@ -23,14 +22,12 @@
 <script>
 import Intro from '@/components/Intro.vue'
 import Auth from '@/components/Auth.vue'
-import SyllableCount from '@/components/SyllableCount.vue'
 
 export default {
   name: 'home',
   components: {
     Intro,
     Auth,
-    SyllableCount,
   },
   data() {
     return {
