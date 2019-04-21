@@ -8,19 +8,19 @@
     <ul>
       <li>
         <a href="https://www.linkedin.com/in/lumlauren/">
-          <img src="@/assets/LaurenLum.jpg" height="150" width="150" />
+          <img src="@/assets/l.jpg" height="150" width="150" />
         </a>
         <p>Lauren Lum</p>
       </li>
       <li>
         <a href="https://www.linkedin.com/in/rujulakapoor1/">
-          <img src="@/assets/rujula.jpg" height="150" width="150" />
+          <img src="@/assets/r.png" height="150" width="150" />
         </a>
         <p>Rujula Kapoor</p>
       </li>
       <li>
         <a href="https://www.linkedin.com/in/jeonghu-park-811338149/">
-          <img src="../assets/jp2.jpg" height="150" width="150" />
+          <img src="../assets/j.jpeg" height="150" width="150" />
         </a>
         <p>Jeonghu Park</p>
       </li>
