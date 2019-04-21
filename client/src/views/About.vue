@@ -3,10 +3,12 @@
     <v-container grid-list-xl></v-container>
     <img alt="Coursemeleon logo" src="@/assets/iKu_cropped.png" />
     <h1>About iKu</h1>
-    <p1>
-      iKu is a revolutionary haiku sharing platform. This application was developed for a CS252 project but is now on track to be the worlds top haiku soical networking site 
-    </p1>
-    <h3>The Development Team</h3>
+           <p style="font-size:25px; font-family:georgia,garamond,serif">
+              iKu is a revolutionary haiku sharing platform. This application was 
+              developed for a CS252 project <br />but is now on track to be the worlds top haiku soical networking site 
+           </p>
+    <h3 style="font-size:30px;">The Development Team</h3>
+     <div class="divider"/>
     <ul>
       <li>
         <a href="https://www.linkedin.com/in/lumlauren/">
