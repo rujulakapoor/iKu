@@ -14,20 +14,20 @@
     </div>
     
     <Intro style="backgroundColor:#DDDDDD"/>
-    <Auth/>
     <p>List of posts would go here</p>
+    <HaikuList />
   </div>
 </template>
 
 <script>
 import Intro from '@/components/Intro.vue'
-import Auth from '@/components/Auth.vue'
+import HaikuList from '@/components/HaikuList.vue/'
 
 export default {
   name: 'home',
   components: {
     Intro,
-    Auth,
+    HaikuList
   },
   data() {
     return {
