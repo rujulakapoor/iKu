@@ -26,6 +26,9 @@ export default {
     SyllableCount,
     About
   },
+  props: {
+    msg:String
+  },
   data() {
     return {
       authenticated: false,
