@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainComponent from './App.vue'
-import SecureComponent from "./components/secure.vue"
+import SecureComponent from "./views/Secure.vue"
 import Home from '@/views/Home'
 
 Vue.use(Router)
