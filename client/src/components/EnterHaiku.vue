@@ -1,8 +1,8 @@
 <template>
   <div class="count">
     <h3>Log in</h3>
-    <p>Username:</p>
-    <p>{{this.username}}</p>
+    <p v-if="LogInVisibility">Please Log in to write a haiku</p>
+    <p v-else>Hello, {{this.username}}</p>
     <div style="align-items:center">
         <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
         <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
