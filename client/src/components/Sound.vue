@@ -13,9 +13,13 @@
           <source src="./party.mp3">
       </audio>
 
-      <b-button v-on:click="playSound1()">Relaxing</b-button>
-      <b-button v-on:click="playSound2()">Nature</b-button>
-      <b-button v-on:click="playSound3()">Party</b-button>
+     <div style="margin: 50px 0 0 0">
+      <b-button style="margin:5px;" v-on:click="playSound1()">Relaxing</b-button>
+      <b-button style="margin:5px;" v-on:click="playSound2()">Nature</b-button>
+      <b-button style="margin:5px;" v-on:click="playSound3()">Party</b-button>
+      
+    </div>
+        
     </div>
         <b-button v-on:click="pauseSound()" style="background-color:#8d72a8">Pause Sound</b-button>
     
@@ -55,7 +59,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 20px 0 0;
+  margin: 35px 0 0;
   color: #8d72a8;
 }
 ul {

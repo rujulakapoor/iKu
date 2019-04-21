@@ -3,9 +3,9 @@
     <v-container grid-list-xl></v-container>
     <img alt="Coursemeleon logo" src="@/assets/iKu_cropped.png" />
     <h1>About iKu</h1>
-    <p>
+    <p1>
       iKu is a revolutionary haiku sharing platform. This application was developed for a CS252 project but is now on track to be the worlds top haiku soical networking site 
-    </p>
+    </p1>
     <h3>The Development Team</h3>
     <ul>
       <li>
