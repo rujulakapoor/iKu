@@ -20,7 +20,7 @@
     <b-button v-on:click="click()">Check</b-button>
     <br/>
     <br/>
-    <b-button v-on:click="createPost()">Post</b-button>
+    <b-button v-on:click="createPost()" style="background-color:#8d72a8">Post</b-button>
   </div>
 </template>
 
@@ -68,7 +68,7 @@ export default {
         );
       }
       
-      //location.reload();
+      location.reload();
       },
       onSuccess(googleUser) {
         //this.console.log(googleUser);

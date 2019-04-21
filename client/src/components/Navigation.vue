@@ -12,13 +12,13 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn to="/" flat>
+          <v-btn to="/" style="text-decoration: none" flat>
             <h4>Home</h4>
           </v-btn>
-          <v-btn to="/create" flat>
+          <v-btn to="/create" style="text-decoration: none" flat>
             <h4>Create</h4>
           </v-btn>
-          <v-btn to="/about" flat>
+          <v-btn to="/about" style="text-decoration: none" flat>
             <h4>About</h4>
           </v-btn>
         </v-toolbar-items>
