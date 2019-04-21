@@ -10,7 +10,9 @@
         v-bind:key="post._id"
       >
         <p class="text">{{ post.username }}</p>
-        <p class="score">{{ post.message }}</p>
+        <p class="score">{{ post.line1 }}</p>
+        <p class="score">{{ post.line2 }}</p>
+        <p class="score">{{ post.line3 }}</p>
       </div>
     </div>  
   </div>

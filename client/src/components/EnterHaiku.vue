@@ -57,14 +57,23 @@ export default {
   methods:{
     async createPost() {
       //Check if logged in
+      
       if(this.username === "Not logged in") {
         alert("Please log in!");
       }
+      
       else {
         console.log("adding user: " + this.username + " haiku: " + this.message);
+        var haikuLines = this.message.split("\n");
+        var line1=haikuLines[0]
+        var line2=haikuLines[1]
+        var line3=haikuLines[2]
+        
         await PostService.insertPost(
           this.username,
-          this.message
+          line1,
+          line2,
+         line3
         );
       }
       
