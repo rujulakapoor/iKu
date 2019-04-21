@@ -3,6 +3,7 @@
     <img alt="Coursemeleon logo" src="@/assets/iKu_cropped.png" />
     <h1>About iKu</h1>
     <p>
+      iKu is a revolutionary haiku sharing platform. This application was developed for a CS252 project but is now on track to be the worlds top haiku soical networking site 
     </p>
     <h3>The Development Team</h3>
     <ul>
@@ -30,10 +31,11 @@
 
 <style>
 h1 {
-  color: #aed581;
+  color: #8d72a8;
 }
 h3 {
   margin: 40px 0 0;
+  color: #8d72a8;
 }
 ul {
   list-style-type: none;

@@ -1,11 +1,14 @@
 <template>
   <div id="home">
+
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
-          <!--<img alt="iKu" src="@/assets/iKu_cropped.png">-->
+
           <h1>iKu</h1>
-          <h3>The revolutionary haiku sharing platform</h3>
+          <!--<img alt="iKu" src="@/assets/iKu_cropped.png">
+          <h3>The revolutionary haiku sharing platform</h3>-->
+          <Intro/>
         </div>
         <div class="col">
           <img alt="iKu waterfall" class="homeGraphic" src="@/assets/home_graphic_circle.png">
@@ -13,9 +16,9 @@
       </div>
     </div>
     
-    <Intro style="backgroundColor:#DDDDDD"/>
-    <Auth/>
-    <SyllableCount style="backgroundColor:#DDDDDD"/>
+    <!--<Intro style="backgroundColor:#E3E3E3"/>-->
+    <Auth style="backgroundColor:#E3E3E3"/>
+    <SyllableCount />
     <p>List of posts would go here</p>
   </div>
 </template>
