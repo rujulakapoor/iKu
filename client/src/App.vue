@@ -14,6 +14,9 @@ export default {
   components: {
     Navigation
   },
+  props: {
+    msg:String
+  },
   data() {
     return {
       authenticated: false,

@@ -3,11 +3,11 @@
     <div class="header">
       <v-toolbar dark flat id="toolbar" align-center>
         <router-link to="/">
-          <img class="logo" alt="logo" src="@/assets/logo.png" />
+          <img class="logo" alt="logo" src="@/assets/iKu_cropped.png" />
         </router-link>
         <v-toolbar-title>
           <router-link to="/">
-            <h3 id="title">iKu</h3>
+            <h3 id="title"></h3>
           </router-link>
         </v-toolbar-title>
         <v-spacer></v-spacer>

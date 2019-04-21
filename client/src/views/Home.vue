@@ -1,11 +1,24 @@
 <template>
   <div id="home">
-    <v-container grid-list-xl></v-container>
-    <img alt="Vue logo" src="@/assets/iKu_cropped.png">
-    <Intro style="backgroundColor:#DDDDDD"/>
-    <Auth/>
-    <About/>
-    <SyllableCount style="backgroundColor:#DDDDDD"/>
+
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+
+          <h1>iKu</h1>
+          <!--<img alt="iKu" src="@/assets/iKu_cropped.png">
+          <h3>The revolutionary haiku sharing platform</h3>-->
+          <Intro/>
+        </div>
+        <div class="col">
+          <img alt="iKu waterfall" class="homeGraphic" src="@/assets/home_graphic_circle.png">
+        </div>
+      </div>
+    </div>
+    
+    <!--<Intro style="backgroundColor:#E3E3E3"/>-->
+    <Auth style="backgroundColor:#E3E3E3"/>
+    <SyllableCount />
     <p>List of posts would go here</p>
   </div>
 </template>
@@ -51,4 +64,20 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+.homeGraphic {
+  width: 600px;
+  height: 600px;
+}
+
+#home h1{
+  font-size: 80px;
+  color: #877a97;
+}
+
+#home h3{
+  font-size: 30px;
+  color: #938d99;
+}
+
 </style>
