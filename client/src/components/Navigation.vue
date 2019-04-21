@@ -18,6 +18,9 @@
           <v-btn to="/create" flat>
             <h4>Create</h4>
           </v-btn>
+          <v-btn to="/about" flat>
+            <h4>About</h4>
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
     </div>
