@@ -15,25 +15,24 @@
         </div>
       </div>
     </div>
-    
-    <!--<Intro style="backgroundColor:#E3E3E3"/>-->
-    <Auth style="backgroundColor:#E3E3E3"/>
-    <SyllableCount />
+  
+
+    <Intro style="backgroundColor:#DDDDDD"/>
+
     <p>List of posts would go here</p>
+    <HaikuList />
   </div>
 </template>
 
 <script>
 import Intro from '@/components/Intro.vue'
-import Auth from '@/components/Auth.vue'
-import SyllableCount from '@/components/SyllableCount.vue'
+import HaikuList from '@/components/HaikuList.vue/'
 
 export default {
   name: 'home',
   components: {
     Intro,
-    Auth,
-    SyllableCount,
+    HaikuList
   },
   data() {
     return {
