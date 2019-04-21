@@ -19,6 +19,11 @@ export default new Router({
             component: () => import("./views/Create.vue")
         },
         {
+            path: "/about",
+            name: "About",
+            component: () => import("./views/About.vue")
+        },
+        {
             path: "*",
             name: "error",
             component: () => import("./views/Error.vue")

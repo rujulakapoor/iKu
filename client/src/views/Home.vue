@@ -4,6 +4,7 @@
     <img alt="Vue logo" src="@/assets/iKu_cropped.png">
     <Intro style="backgroundColor:#DDDDDD"/>
     <Auth/>
+    <About/>
     <SyllableCount style="backgroundColor:#DDDDDD"/>
     <p>List of posts would go here</p>
   </div>
