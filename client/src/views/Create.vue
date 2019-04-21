@@ -21,7 +21,6 @@ export default {
 <style scoped>
 #create h1 {
   font-size: 50px;
-  font-weight: 600;
   color: #726483;
 }
 </style>
