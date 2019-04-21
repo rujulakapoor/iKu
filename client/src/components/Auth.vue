@@ -1,12 +1,12 @@
 <template>
   <div class="auth">
     <h3>Log in</h3>
-    <p>{{username}}</p>
+    <p>Username:</p>
+    <p>{{this.username}}</p>
     <div style="align-items:center">
-        <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" class="googlebutton">
-            Log in with Google
-        </GoogleLogin>
-        <b-button class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+        <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
+        <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+        <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
     </div>
     
   </div>
@@ -17,30 +17,36 @@
 export default {
   name: 'Auth',
   props: {
-    msg: String
+    msg: String,
+
   },
   data: () => ({
     params: {
         client_id: "284290029340-v9q3t3ebcum9k4qokplucdt8aitkernf.apps.googleusercontent.com",
     },
     username: 'Not logged in',
+    LogInVisibility: true,
   }),
   methods: {
    onSuccess(googleUser) {
-        this.console.log(googleUser);
+        //this.console.log(googleUser);
  
         // This only gets the user information: id, name, imageUrl and email
-        this.console.log(googleUser.getBasicProfile());
         this.username = googleUser.getBasicProfile().getName();
+        this.LogInVisibility = false;
     },
     onFailure(error) {
-        this.console.log(error);
+        //this.console.log(error);
+        this.username = error;
     },
     login(){
-        this.username = "Hello, Guest!"
-        //this.$emit("authenticated", true);
-        //this.$router.replace({ name: "secure" });
+        this.username = "Guest";
+        this.LogInVisibility = false;
     },
+    logout(){
+        this.username = "Not logged in";
+        this.LogInVisibility = true;
+    }
   }
 }
 /* 
