@@ -16,11 +16,8 @@
       </div>
     </div>
   
-
-    <Intro style="backgroundColor:#DDDDDD"/>
-
-    <p>List of posts would go here</p>
     <HaikuList />
+
   </div>
 </template>
 

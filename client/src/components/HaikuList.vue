@@ -1,5 +1,7 @@
 <template>
   <div class="haikulist">
+    <h3>Explore</h3>
+
     <div class ="posts-container">
       <div class="post"
         v-for="(post, index) in haikus"
@@ -38,6 +40,11 @@ export default {
 </script>
 
 <style scoped>
+h3.haikulist {
+  color: #726483;
+  font-size: 100px;
+}
+
 div.container {
   max-width: 800px;
   margin: 0 auto;
@@ -55,13 +62,6 @@ div.post {
   padding: 10px 10px 30px 10px;
   margin-bottom: 15px;
   margin: 20px;
-}
-div.created-at {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 5px 15px 5px 15px;
-  background-color: darkgreen;
 }
 p.text {
   font-size: 22px;

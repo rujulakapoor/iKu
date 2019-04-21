@@ -1,12 +1,14 @@
 <template>
   <div class="count">
-    <h3>Log in</h3>
-    <p>Username:</p>
-    <p>{{this.username}}</p>
-    <div style="align-items:center">
-        <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
-        <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
-        <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
+    <div class="login">
+      <h3>Log in</h3>
+      <p>Username:</p>
+      <p>{{this.username}}</p>
+      <div  style="align-items:center">
+          <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
+          <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+          <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
+      </div>
     </div>
 
     <div style="margin: 50px 0 0 0">
@@ -176,6 +178,13 @@ border-color: #4285f4;
 </style>
 
 <style scoped>
+.login {
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
+  margin: 30px;
+  padding: 10px;
+}
+
 h3 {
   margin: 20px 0 0;
   color: #8d72a8;

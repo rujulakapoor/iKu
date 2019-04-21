@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="create">
     <v-container grid-list-xl></v-container>
     <h1>Create</h1>
     <EnterHaiku />
@@ -18,4 +18,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#create h1 {
+  font-size: 50px;
+  color: #726483;
+}
+</style>
