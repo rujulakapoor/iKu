@@ -42,6 +42,18 @@ export default {
     username: 'Not logged in',
     LogInVisibility: true,
   }),
+  mounted() {
+    if (localStorage.name != "Not logged in") {
+      console.log("Load prev username = "+localStorage.username);
+      this.username = localStorage.username;
+      this.LogInVisibility = false;
+    }
+    else{
+      console.log("Load prev username = what"+localStorage.username);
+      this.username = 'Not logged in';
+      this.LogInVisibility = true;
+    }
+  },
   methods:{
     async createPost() {
       //Check if logged in
@@ -63,6 +75,7 @@ export default {
  
         // This only gets the user information: id, name, imageUrl and email
         this.username = googleUser.getBasicProfile().getName();
+        localStorage.username = this.username;
         this.LogInVisibility = false;
       },
       onFailure(error) {
@@ -72,10 +85,12 @@ export default {
       login(){
           this.username = "Guest";
           this.LogInVisibility = false;
+          localStorage.username = "Guest";
       },
       logout(){
           this.username = "Not logged in";
           this.LogInVisibility = true;
+          localStorage.username = "Not logged in";
       },
       httpPromise(line){
           return new Promise((resolve, reject) => {

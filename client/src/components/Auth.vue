@@ -20,11 +20,23 @@ export default {
     msg: String,
 
   },
+  mounted() {
+    if (localStorage.name != "Not logged in") {
+      console.log("Load prev username = "+localStorage.username);
+      this.username = localStorage.username;
+      this.LogInVisibility = false;
+    }
+    else{
+      console.log("Load prev username = what"+localStorage.username);
+      this.username = 'Not logged in';
+      this.LogInVisibility = true;
+    }
+  },
   data: () => ({
     params: {
         client_id: "284290029340-v9q3t3ebcum9k4qokplucdt8aitkernf.apps.googleusercontent.com",
     },
-    username: 'Not logged in',
+    username: '',
     LogInVisibility: true,
   }),
   methods: {
@@ -33,6 +45,7 @@ export default {
  
         // This only gets the user information: id, name, imageUrl and email
         this.username = googleUser.getBasicProfile().getName();
+        localStorage.username = this.username;
         this.LogInVisibility = false;
     },
     onFailure(error) {
@@ -42,9 +55,12 @@ export default {
     login(){
         this.username = "Guest";
         this.LogInVisibility = false;
+        localStorage.username = "Guest";
+        console.log("localStorage.username = "+localStorage.username);
     },
     logout(){
         this.username = "Not logged in";
+        localStorage.username = "Not logged in";
         this.LogInVisibility = true;
     }
   }
