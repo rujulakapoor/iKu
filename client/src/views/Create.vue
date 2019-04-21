@@ -3,17 +3,20 @@
     <v-container grid-list-xl></v-container>
     <h1>Create</h1>
     <EnterHaiku />
+    <Sound />
     <br>
   </div>
 </template>
 
 <script>
 import EnterHaiku from '@/components/EnterHaiku.vue';
+import Sound from '@/components/Sound.vue';
 
 export default {
   name: "create",
   components: {
-    EnterHaiku
+    EnterHaiku,
+    Sound
   }
 };
 </script>
