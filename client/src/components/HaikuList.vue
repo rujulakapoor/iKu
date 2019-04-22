@@ -4,7 +4,7 @@
     <div class="container">
       
         <div class="post"
-          v-for="(post, index) in haikus"
+          v-for="(post, index) in haikus.slice().reverse()"
           v-bind:item="post"
           v-bind:index="index"
           v-bind:key="post._id"
