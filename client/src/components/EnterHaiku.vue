@@ -2,11 +2,11 @@
   <div class="count">
     <div class="login">
       <h3>Log in</h3>
-      <p v-if="this.username === 'Not logged in'">Please Log in to write a haiku</p>
+      <p v-if="LogInVisibility != false">Please Log in to write a haiku</p>
       <p v-else>Hello, {{this.username}}</p>
       <div style="align-items:center">
-          <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
-          <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+          <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility != false" class="googlebutton">Log in with Google</GoogleLogin>
+          <b-button v-if="LogInVisibility != false" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
           <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
       </div>
       <br/>
@@ -42,15 +42,15 @@ export default {
     LogInVisibility: true,
   }),
   mounted() {
-    if (localStorage.name != "Not logged in") {
-      //console.log("Load prev username = "+localStorage.username);
-      this.username = localStorage.username;
-      this.LogInVisibility = false;
-    }
-    else{
-      //console.log("Load prev username = what"+localStorage.username);
+    if (localStorage.username === "Not logged in" || localStorage.username === undefined ) {
+      console.log("Load prev username = what"+localStorage.username);
       this.username = 'Not logged in';
       this.LogInVisibility = true;
+    }
+    else{
+      console.log("Load prev username = "+localStorage.username);
+      this.username = localStorage.username;
+      this.LogInVisibility = false;
     }
   },
   methods:{
@@ -62,7 +62,7 @@ export default {
       }
 
       else if(this.click() === false){
-        alert("Your Haiku is not valid. Please make sure 5,7 and 5 syllables!")
+        alert("Your Haiku is not valid, you're a failure! Please make sure 5,7 and 5 syllables!")
       }
       
       else {
@@ -113,7 +113,7 @@ export default {
                 let reqURL = "https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?md=s&max=1&sp=";
                 reqURL += word;
                 that.$http.get(reqURL).then(result => {
-                    console.log(result);
+                    //console.log(result);
                     counter++;
                     total += result["body"][0]["numSyllables"];
                     //console.log(word + " : " + total);
