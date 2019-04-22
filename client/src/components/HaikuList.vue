@@ -72,13 +72,13 @@ p.text {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 0;
-  margin-left: 25vw;
+  margin-left: 50%;
   color: #726483;
 }
 p.score {
   font-size: 22px;
   margin-bottom: 0;
-  margin-left: 15vw;
+  margin-left: 30%;
   color: #938d99;
 }
 </style>
