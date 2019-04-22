@@ -12,16 +12,14 @@
       <br/>
     </div>
 
-    <div style="margin: 50px 0 0 0">
+    <div class="write" >
       <h3>Write your Haiku</h3>
         <!-- <p style="white-space: pre-line;">{{message}}</p> -->
         <textarea class="textbox" v-model="message" placeholder="Enter your Haiku here" rows="3" max-rows="3"></textarea>
         <p>{{result}}</p>
+        <b-button v-on:click="click()" style="margin-right: 1%">Check</b-button>
+        <b-button v-on:click="createPost()" style="background-color:#8d72a8; margin-left: 1%">Post</b-button>
     </div>
-    <b-button v-on:click="click()">Check</b-button>
-    <br/>
-    <br/>
-    <b-button v-on:click="createPost()" style="background-color:#8d72a8">Post</b-button>
   </div>
 </template>
 
@@ -115,6 +113,7 @@ export default {
                 let reqURL = "https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?md=s&max=1&sp=";
                 reqURL += word;
                 that.$http.get(reqURL).then(result => {
+                    //console.log(result);
                     counter++;
                     total += result["body"][0]["numSyllables"];
                     //console.log(word + " : " + total);
@@ -179,6 +178,9 @@ export default {
 <style>
 .textbox{
     width: 70%;
+    background-color:#ffffff;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .googlebutton { 
@@ -195,6 +197,15 @@ export default {
   border-color: #8d72a8;
   margin: 0 0 0 10px;
 }
+
+.write{
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
+  margin: 30px;
+  padding: 10px;
+  margin-right: 15%;
+  margin-left: 15%;
+}
 </style>
 
 <style scoped>
@@ -203,8 +214,8 @@ export default {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
   margin: 30px;
   padding: 10px;
-  margin-right: 250px;
-  margin-left: 250px;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 h3 {

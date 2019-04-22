@@ -1,28 +1,26 @@
 <template>
   <div class="hello">
 
-    <div style="margin: 50px 0 50px 0">
-      <h3> Enhance Your Writing Experience: Choose A Mood</h3>
-      <audio id="play2"> 
+      <div>
+        <h3> Enhance Your Writing Experience: Choose A Mood</h3>
+        <audio id="play2"> 
           <source src="./relax.mp3">
-      </audio>
-      <audio id="play3"> 
+        </audio>
+        <audio id="play3"> 
           <source src="./nature.mp3">
-      </audio>
-       <audio id="play4"> 
+        </audio>
+        <audio id="play4"> 
           <source src="./party.mp3">
-      </audio>
+        </audio>
 
-     <div style="margin: 50px 0 0 0">
-      <b-button style="margin:5px;" v-on:click="playSound1()">Relaxing</b-button>
-      <b-button style="margin:5px;" v-on:click="playSound2()">Nature</b-button>
-      <b-button style="margin:5px;" v-on:click="playSound3()">Party</b-button>
-      
-    </div>
+        <div style="margin: 20px 0 0 0">
+          <b-button style="margin:5px;" v-on:click="playSound1()">Relaxing</b-button>
+          <b-button style="margin:5px;" v-on:click="playSound2()">Nature</b-button>
+          <b-button style="margin:5px;" v-on:click="playSound3()">Party</b-button>
+          <b-button v-on:click="pauseSound()" style="background-color:#8d72a8; margin: 5px;">Pause</b-button>
+        </div>
         
-    </div>
-        <b-button v-on:click="pauseSound()" style="background-color:#8d72a8">Pause Sound</b-button>
-    
+      </div>
 
   </div>
 </template>
@@ -32,17 +30,17 @@ export default {
   name: 'Sound',
   methods: {
   playSound1(){
-        console.log("HELLLLO")
+        //console.log("HELLLLO")
         var x=document.getElementById('play2');
         x.play();   
   },
-   playSound2(){
-        console.log("HELLLLO")
+  playSound2(){
+        //console.log("HELLLLO")
         var x=document.getElementById('play3');
         x.play();   
   },
   playSound3(){
-        console.log("HELLLLO")
+        //console.log("HELLLLO")
         var x=document.getElementById('play4');
         x.play();   
   },
@@ -58,6 +56,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello{
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
+  margin: 30px;
+  padding: 10px;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
 h3 {
   margin: 35px 0 0;
   color: #8d72a8;
