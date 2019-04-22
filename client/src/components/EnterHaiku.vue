@@ -2,7 +2,7 @@
   <div class="count">
     <div class="login">
       <h3>Log in</h3>
-      <p v-if="LogInVisibility">Please Log in to write a haiku</p>
+      <p v-if="this.username === 'Not logged in'">Please Log in to write a haiku</p>
       <p v-else>Hello, {{this.username}}</p>
       <div style="align-items:center">
           <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
@@ -12,16 +12,14 @@
       <br/>
     </div>
 
-    <div style="margin: 50px 0 0 0">
+    <div class="write" >
       <h3>Write your Haiku</h3>
         <!-- <p style="white-space: pre-line;">{{message}}</p> -->
         <textarea class="textbox" v-model="message" placeholder="Enter your Haiku here" rows="3" max-rows="3"></textarea>
         <p>{{result}}</p>
+        <b-button v-on:click="click()" style="margin-right: 1%">Check</b-button>
+        <b-button v-on:click="createPost()" style="background-color:#8d72a8; margin-left: 1%">Post</b-button>
     </div>
-    <b-button v-on:click="click()">Check</b-button>
-    <br/>
-    <br/>
-    <b-button v-on:click="createPost()" style="background-color:#8d72a8">Post</b-button>
   </div>
 </template>
 
@@ -45,12 +43,12 @@ export default {
   }),
   mounted() {
     if (localStorage.name != "Not logged in") {
-      console.log("Load prev username = "+localStorage.username);
+      //console.log("Load prev username = "+localStorage.username);
       this.username = localStorage.username;
       this.LogInVisibility = false;
     }
     else{
-      console.log("Load prev username = what"+localStorage.username);
+      //console.log("Load prev username = what"+localStorage.username);
       this.username = 'Not logged in';
       this.LogInVisibility = true;
     }
@@ -60,7 +58,11 @@ export default {
       //Check if logged in
       
       if(this.username === "Not logged in") {
-        alert("Please log in!");
+        alert("Please log in before posting your Haiku!");
+      }
+
+      else if(this.click() === false){
+        alert("Your Haiku is not valid. Please make sure 5,7 and 5 syllables!")
       }
       
       else {
@@ -74,22 +76,21 @@ export default {
           this.username,
           line1,
           line2,
-         line3
+          line3
         );
+
+        location.reload();
+
       }
       
-      location.reload();
-      },
-      onSuccess(googleUser) {
-        //this.console.log(googleUser);
- 
+    },
+    onSuccess(googleUser) {
         // This only gets the user information: id, name, imageUrl and email
         this.username = googleUser.getBasicProfile().getName();
         localStorage.username = this.username;
         this.LogInVisibility = false;
       },
       onFailure(error) {
-          //this.console.log(error);
           this.username = error;
       },
       login(){
@@ -112,12 +113,14 @@ export default {
                 let reqURL = "https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?md=s&max=1&sp=";
                 reqURL += word;
                 that.$http.get(reqURL).then(result => {
+                    console.log(result);
                     counter++;
                     total += result["body"][0]["numSyllables"];
                     //console.log(word + " : " + total);
                     if(counter == words.length){
                         resolve(total);
                     }
+                    setTimeout(() => reject("No Response. Are you sure you typed in valid English word?"), 2000);
                 }, error => {
                     that.HaikuError += error;
                     reject(error);
@@ -129,6 +132,11 @@ export default {
           var isHaiku = true;
           var HaikuError = "";
           var haikuLines = this.message.split("\n");
+
+          if(haikuLines.length != 3){
+            this.result = "Invalid Haiku, you're a failure!\n" + " Your Haiku has to have 3 lines!"
+            return false;
+          }
 
           this.httpPromise(haikuLines[0]).then( (total1) =>{
             var firstline = total1;
@@ -144,18 +152,24 @@ export default {
 
                     if(firstline !=  5){
                         isHaiku = false;
-                        HaikuError+="Your first line is not 5 syllables!\n";
+                        HaikuError+="Your first line has " + firstline + " syllables!\n";
                     }
                     if(secondline !=  7){
                         isHaiku = false;
-                        HaikuError+="Your second line is not 7 syllables!\n";
+                        HaikuError+="Your second line has " + secondline + " syllables!\n";
                     }
                     if(thirdline !=  5){
                         isHaiku = false;
-                        HaikuError+="Your third line is not 5 syllables!\n";
+                        HaikuError+="Your third line has " + thirdline + " syllables!\n";
                     }
-                    if(isHaiku) this.result = "Valid Haiku!";
-                    else this.result = "Invalid Haiku, you're a failure!\n" + HaikuError;
+                    if(isHaiku){
+                      this.result = "Valid Haiku!";
+                      return true;
+                    } 
+                    else{
+                      this.result = "Invalid Haiku, you're a failure!\n" + HaikuError;
+                      return false;
+                    } 
 
                 }, (err3) => {HaikuError+=err3});
             }, (err2) => {HaikuError+=err2});
@@ -169,21 +183,33 @@ export default {
 <style>
 .textbox{
     width: 70%;
+    background-color:#ffffff;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .googlebutton { 
-background-color: #4285f4;
-color: #FFFFFF;
-padding: 5px 10px 7px 10px;
-margin: 15px 10px 15px 0;
-border-radius: 5px;
-border-color: #4285f4;
+  background-color: #4285f4;
+  color: #FFFFFF;
+  padding: 5px 10px 7px 10px;
+  margin: 15px 10px 15px 0;
+  border-radius: 5px;
+  border-color: #4285f4;
 }  
 
 .guestbutton{
-    background-color: #8d72a8;
-    border-color: #8d72a8;
-    margin: 0 0 0 10px;
+  background-color: #8d72a8;
+  border-color: #8d72a8;
+  margin: 0 0 0 10px;
+}
+
+.write{
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
+  margin: 30px;
+  padding: 10px;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 </style>
 
@@ -193,8 +219,8 @@ border-color: #4285f4;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
   margin: 30px;
   padding: 10px;
-  margin-right: 250px;
-  margin-left: 250px;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 h3 {

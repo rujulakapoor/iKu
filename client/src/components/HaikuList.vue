@@ -1,19 +1,20 @@
 <template>
   <div class="haikulist">
     <h3>Explore</h3>
+    <div class="container">
+      
+        <div class="post"
+          v-for="(post, index) in haikus.slice().reverse()"
+          v-bind:item="post"
+          v-bind:index="index"
+          v-bind:key="post._id"
+        >
+          <p class="score">{{ post.line1 }}</p>
+          <p class="score">{{ post.line2 }}</p>
+          <p class="score">{{ post.line3 }}</p>
+          <p class="text"> - {{ post.username }}</p>
+        </div>
 
-    <div class ="posts-container">
-      <div class="post"
-        v-for="(post, index) in haikus"
-        v-bind:item="post"
-        v-bind:index="index"
-        v-bind:key="post._id"
-      >
-        <p class="text">{{ post.username }}</p>
-        <p class="score">{{ post.line1 }}</p>
-        <p class="score">{{ post.line2 }}</p>
-        <p class="score">{{ post.line3 }}</p>
-      </div>
     </div>  
   </div>
 </template>
@@ -64,16 +65,20 @@ div.post {
   padding: 10px 10px 30px 10px;
   margin-bottom: 15px;
   margin: 20px;
+  max-width: 75vw;
+  text-align: left;
 }
 p.text {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 0;
+  margin-left: 50%;
   color: #726483;
 }
 p.score {
   font-size: 22px;
   margin-bottom: 0;
+  margin-left: 30%;
   color: #938d99;
 }
 </style>
