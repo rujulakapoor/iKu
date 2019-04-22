@@ -2,7 +2,7 @@
   <div class="hello">
 
     <div style="margin: 50px 0 50px 0">
-      <h3> Enhance Your Wrting Experience Choose A Mood</h3>
+      <h3> Enhance Your Writing Experience: Choose A Mood</h3>
       <audio id="play2"> 
           <source src="./relax.mp3">
       </audio>

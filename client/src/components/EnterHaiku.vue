@@ -1,12 +1,15 @@
 <template>
   <div class="count">
-    <h3>Log in</h3>
-    <p v-if="LogInVisibility">Please Log in to write a haiku</p>
-    <p v-else>Hello, {{this.username}}</p>
-    <div style="align-items:center">
-        <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
-        <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
-        <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
+    <div class="login">
+      <h3>Log in</h3>
+      <p v-if="LogInVisibility">Please Log in to write a haiku</p>
+      <p v-else>Hello, {{this.username}}</p>
+      <div style="align-items:center">
+          <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
+          <b-button v-if="LogInVisibility" class="guestbutton" v-on:click="login()">Log in as a Guest</b-button>
+          <b-button v-else class="guestbutton" v-on:click="logout()">Log out</b-button>
+      </div>
+      <br/>
     </div>
 
     <div style="margin: 50px 0 0 0">
@@ -190,6 +193,8 @@ border-color: #4285f4;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.11);
   margin: 30px;
   padding: 10px;
+  margin-right: 250px;
+  margin-left: 250px;
 }
 
 h3 {
