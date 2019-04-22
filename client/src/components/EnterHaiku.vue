@@ -2,7 +2,7 @@
   <div class="count">
     <div class="login">
       <h3>Log in</h3>
-      <p v-if="LogInVisibility">Please Log in to write a haiku</p>
+      <p v-if="this.username === 'Not logged in'">Please Log in to write a haiku</p>
       <p v-else>Hello, {{this.username}}</p>
       <div style="align-items:center">
           <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" v-if="LogInVisibility" class="googlebutton">Log in with Google</GoogleLogin>
@@ -45,12 +45,12 @@ export default {
   }),
   mounted() {
     if (localStorage.name != "Not logged in") {
-      console.log("Load prev username = "+localStorage.username);
+      //console.log("Load prev username = "+localStorage.username);
       this.username = localStorage.username;
       this.LogInVisibility = false;
     }
     else{
-      console.log("Load prev username = what"+localStorage.username);
+      //console.log("Load prev username = what"+localStorage.username);
       this.username = 'Not logged in';
       this.LogInVisibility = true;
     }
@@ -60,7 +60,11 @@ export default {
       //Check if logged in
       
       if(this.username === "Not logged in") {
-        alert("Please log in!");
+        alert("Please log in before posting your Haiku!");
+      }
+
+      else if(!this.click()){
+        alert("Your Haiku is not valid. Please make sure 5,7 and 5 syllables!")
       }
       
       else {
@@ -74,22 +78,21 @@ export default {
           this.username,
           line1,
           line2,
-         line3
+          line3
         );
+
+        location.reload();
+
       }
       
-      location.reload();
-      },
-      onSuccess(googleUser) {
-        //this.console.log(googleUser);
- 
+    },
+    onSuccess(googleUser) {
         // This only gets the user information: id, name, imageUrl and email
         this.username = googleUser.getBasicProfile().getName();
         localStorage.username = this.username;
         this.LogInVisibility = false;
       },
       onFailure(error) {
-          //this.console.log(error);
           this.username = error;
       },
       login(){
@@ -130,6 +133,11 @@ export default {
           var HaikuError = "";
           var haikuLines = this.message.split("\n");
 
+          if(haikuLines.length != 3){
+            this.result = "Invalid Haiku, you're a failure!\n" + " Your Haiku has to have 3 lines!"
+            return false;
+          }
+
           this.httpPromise(haikuLines[0]).then( (total1) =>{
             var firstline = total1;
             this.httpPromise(haikuLines[1]).then( (total2) => {
@@ -144,11 +152,11 @@ export default {
 
                     if(firstline !=  5){
                         isHaiku = false;
-                        HaikuError+="Your first line is not 5 syllables!\n";
+                        HaikuError+="Your first line has " + firstline + " syllables!\n";
                     }
                     if(secondline !=  7){
                         isHaiku = false;
-                        HaikuError+="Your second line is not 7 syllables!\n";
+                        HaikuError+="Your second line has " + secondline + " syllables!\n";
                     }
                     if(thirdline !=  5){
                         isHaiku = false;
@@ -156,6 +164,8 @@ export default {
                     }
                     if(isHaiku) this.result = "Valid Haiku!";
                     else this.result = "Invalid Haiku, you're a failure!\n" + HaikuError;
+
+                    return isHaiku;
 
                 }, (err3) => {HaikuError+=err3});
             }, (err2) => {HaikuError+=err2});
@@ -172,18 +182,18 @@ export default {
 }
 
 .googlebutton { 
-background-color: #4285f4;
-color: #FFFFFF;
-padding: 5px 10px 7px 10px;
-margin: 15px 10px 15px 0;
-border-radius: 5px;
-border-color: #4285f4;
+  background-color: #4285f4;
+  color: #FFFFFF;
+  padding: 5px 10px 7px 10px;
+  margin: 15px 10px 15px 0;
+  border-radius: 5px;
+  border-color: #4285f4;
 }  
 
 .guestbutton{
-    background-color: #8d72a8;
-    border-color: #8d72a8;
-    margin: 0 0 0 10px;
+  background-color: #8d72a8;
+  border-color: #8d72a8;
+  margin: 0 0 0 10px;
 }
 </style>
 
