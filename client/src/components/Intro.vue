@@ -11,6 +11,10 @@
     <p>Each line has 5, 7, and 5 syllables respectively. </p>
     <p>Compose, share, and learn about Haiku with iKu.</p>
 
+    <v-btn to="/create" class="button" style="backgroundColor: #8d72a8" raised round>
+      <p style="margin: 5px 0 3px 0">Write your Haiku</p>
+    </v-btn>
+
   </div>
 </template>
 
@@ -24,6 +28,14 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+  .button{
+    background-color: #8d72a8;
+    border-color: #8d72a8;
+    margin: 10px 0 0 0;
+  }
+</style>
+
 <style scoped>
 h3 {
   margin: 20px 0 0;
