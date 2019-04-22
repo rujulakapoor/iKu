@@ -61,7 +61,7 @@ export default {
         alert("Please log in before posting your Haiku!");
       }
 
-      else if(!this.click()){
+      else if(this.click() === false){
         alert("Your Haiku is not valid. Please make sure 5,7 and 5 syllables!")
       }
       
@@ -113,13 +113,14 @@ export default {
                 let reqURL = "https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?md=s&max=1&sp=";
                 reqURL += word;
                 that.$http.get(reqURL).then(result => {
-                    //console.log(result);
+                    console.log(result);
                     counter++;
                     total += result["body"][0]["numSyllables"];
                     //console.log(word + " : " + total);
                     if(counter == words.length){
                         resolve(total);
                     }
+                    setTimeout(() => reject("No Response. Are you sure you typed in valid English word?"), 2000);
                 }, error => {
                     that.HaikuError += error;
                     reject(error);
@@ -159,12 +160,16 @@ export default {
                     }
                     if(thirdline !=  5){
                         isHaiku = false;
-                        HaikuError+="Your third line is not 5 syllables!\n";
+                        HaikuError+="Your third line has " + thirdline + " syllables!\n";
                     }
-                    if(isHaiku) this.result = "Valid Haiku!";
-                    else this.result = "Invalid Haiku, you're a failure!\n" + HaikuError;
-
-                    return isHaiku;
+                    if(isHaiku){
+                      this.result = "Valid Haiku!";
+                      return true;
+                    } 
+                    else{
+                      this.result = "Invalid Haiku, you're a failure!\n" + HaikuError;
+                      return false;
+                    } 
 
                 }, (err3) => {HaikuError+=err3});
             }, (err2) => {HaikuError+=err2});
