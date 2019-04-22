@@ -12,7 +12,7 @@
     <p>Compose, share, and learn about Haiku with iKu.</p>
 
     <v-btn to="/create" class="button" style="backgroundColor: #8d72a8" raised round>
-      <p style="margin: 5px 0 3px 0">Write your Haiku</p>
+      <p style="margin: 5px 0 3px 0; color: #FFFFFF">Write your Haiku</p>
     </v-btn>
 
   </div>
